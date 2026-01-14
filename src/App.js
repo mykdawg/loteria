@@ -1,5 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
+import GameBoard from './components/GameBoard';
+import CurrentCard from './components/CurrentCard';
+import LanguageToggle from './components/LanguageToggle';
+import HistorySection from './components/HistorySection';
+import GameInfo from './components/GameInfo';
+import WinMessage from './components/WinMessage';
+import HowToPlay from './components/HowToPlay';
 
 // Traditional Lotería cards with their names and traditional calls
 const loteriaCards = [
@@ -323,66 +330,19 @@ function App() {
     }
   }, [gameStarted, gameWon, drawnCards, markedPositions]);
 
-  return (
+   return (
     <div className="App">
       <header className="App-header">
         <h1>🎲 Lotería Mexicana 🎲</h1>
-        
+         
         {!gameStarted ? (
           <div className="start-screen">
-            <div className="language-tabs">
-              <button className="language-tab active" onClick={() => setLanguage('es')} role="button" tabIndex="0">Español</button>
-              <button className="language-tab" onClick={() => setLanguage('en')} role="button" tabIndex="0">English</button>
-            </div>
+            <LanguageToggle language={language} onLanguageChange={setLanguage} />
             
-            <div className="game-background">
-              {language === 'es' ? (
-                <div className="background-spanish">
-                  <h3>Historia de la Lotería</h3>
-                  <p>La Lotería es un juego tradicional mexicano que se remonta al siglo XVIII, inspirado en juegos europeos similares. Este juego de mesa, similar al bingo, se ha convertido en una parte esencial de la cultura mexicana y es disfrutado por personas de todas las edades.</p>
-                  <p>Originalmente traído por los españoles durante la colonización, el juego evolucionó para incluir imágenes y símbolos que representan la cultura, la vida cotidiana y el folclore mexicano. Cada carta tiene un nombre y una frase tradicional que el "cantador" anuncia durante el juego.</p>
-                  <p>La Lotería no es solo un juego, sino una tradición cultural que une a familias y amigos en celebraciones, ferias y reuniones sociales.</p>
-                </div>
-              ) : (
-                <div className="background-english">
-                  <h3>History of Lotería</h3>
-                  <p>Lotería is a traditional Mexican game dating back to the 18th century, inspired by similar European games. This board game, similar to bingo, has become an essential part of Mexican culture and is enjoyed by people of all ages.</p>
-                  <p>Originally brought by the Spanish during colonization, the game evolved to include images and symbols representing Mexican culture, daily life, and folklore. Each card has a name and a traditional phrase that the "caller" announces during the game.</p>
-                  <p>Lotería is not just a game, but a cultural tradition that brings together families and friends at celebrations, fairs, and social gatherings.</p>
-                </div>
-              )}
-            </div>
+            <HistorySection language={language} />
             
-            <div className="how-to-play">
-              {language === 'es' ? (
-                <div className="instructions-spanish">
-                  <h2>¿Cómo Jugar Lotería?</h2>
-                  <ol>
-                    <li>Haz clic en "Nuevo Juego" para comenzar</li>
-                    <li>El repartidor sacará cartas automáticamente cada 3 segundos</li>
-                    <li>Cuando saques una carta, busca su imagen en tu tablero</li>
-                    <li>Haz clic en la carta coincidente en tu tablero para marcarla</li>
-                    <li>El primer jugador en completar una línea (horizontal, vertical o diagonal) gana</li>
-                    <li>¡Grita "¡Lotería!" cuando completes una línea para ganar!</li>
-                  </ol>
-                  <p><strong>Objetivo:</strong> Completa una línea de 4 cartas en tu tablero antes que los demás jugadores.</p>
-                </div>
-              ) : (
-                <div className="instructions-english">
-                  <h2>How to Play Lotería</h2>
-                  <ol>
-                    <li>Click "New Game" to start</li>
-                    <li>The dealer will automatically draw cards every 3 seconds</li>
-                    <li>When a card is drawn, look for its image on your board</li>
-                    <li>Click on the matching card on your board to mark it</li>
-                    <li>The first player to complete a line (horizontal, vertical, or diagonal) wins</li>
-                    <li>Shout "¡Lotería!" when you complete a line to win!</li>
-                  </ol>
-                  <p><strong>Objective:</strong> Complete a line of 4 cards on your board before other players.</p>
-                </div>
-              )}
-            </div>
-            
+            <HowToPlay language={language} />
+             
              <button onClick={startNewGame} className="start-button" role="button" tabIndex="0">
               {language === 'es' ? 'Nuevo Juego' : 'New Game'}
             </button>
@@ -390,66 +350,23 @@ function App() {
         ) : (
           <div className="game-container">
             {gameWon ? (
-                <div className="win-message">
-                  <h2>¡Lotería! 🎉</h2>
-                  {language === 'es' ? (
-                    <p>¡Has ganado! Completa una línea de cartas.</p>
-                  ) : (
-                    <p>You won! You completed a line of cards.</p>
-                  )}
-                   <button onClick={startNewGame} role="button" tabIndex="0">
-                    {language === 'es' ? 'Jugar de nuevo' : 'Play Again'}
-                  </button>
-                </div>
-                
-
+                <WinMessage language={language} onPlayAgain={startNewGame} />
             ) : (
               <>
-                 <div className="current-card" data-testid="current-card">
-                  {currentCard && (
-                    <div>
-                      <div className="card-emoji">{currentCard.emoji}</div>
-                      <h3>{currentCard.name}</h3>
-                      <p><em>{currentCard.call}</em></p>
-                    </div>
-                  )}
-                </div>
+                <CurrentCard card={currentCard} />
                 
-                <div className="player-board">
-                  <h3>Tu Tablero</h3>
-                  <div className="board-grid">
-                    {playerBoard.map((card, index) => (
-                       <div
-                        key={card.id}
-                        className={`card ${markedPositions.includes(index) ? 'marked' : ''}`}
-                        onClick={() => handleCardClick(card, index)}
-                        data-testid="loteria-card"
-                        role="button"
-                        tabIndex="0"
-                      >
-                        <div className="card-emoji">{card.emoji}</div>
-                        <div className="card-name">{card.name}</div>
-                        {markedPositions.includes(index) && (
-                          <div className="marker">🟢</div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <GameBoard
+                  playerBoard={playerBoard}
+                  markedPositions={markedPositions}
+                  onCardClick={handleCardClick}
+                  language={language}
+                />
                 
-                <div className="game-info">
-                  {language === 'es' ? (
-                    <>
-                      <p>Cartas sacadas: {drawnCards.length}/54</p>
-                      <p>Cartas marcadas: {markedPositions.length}/16</p>
-                    </>
-                  ) : (
-                    <>
-                      <p>Cards drawn: {drawnCards.length}/54</p>
-                      <p>Cards marked: {markedPositions.length}/16</p>
-                    </>
-                  )}
-                </div>
+                <GameInfo
+                  cardsDrawn={drawnCards.length}
+                  cardsMarked={markedPositions.length}
+                  language={language}
+                />
               </>
             )}
           </div>
