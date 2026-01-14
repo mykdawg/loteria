@@ -1,6 +1,55 @@
-# Getting Started with Create React App
+# Lotería Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple implementation of the traditional Mexican Lotería game using React.
+
+## Rules of Lotería
+
+### Objective
+Lotería is a traditional Mexican game of chance, similar to bingo. The objective is to be the first player to complete a specific pattern on your game board by matching images called out by the dealer.
+
+### Game Components
+- **Deck**: 54 unique image cards
+- **Boards**: Each player has a game board with a 4x4 grid of random images from the deck
+- **Beans/markers**: Used to mark matched images on the boards
+
+### Setup
+1. Each player receives one game board
+2. The dealer shuffles the deck of 54 cards
+3. Players use beans or markers to cover images on their boards
+
+### Gameplay
+1. The dealer draws one card at a time from the deck and announces it to all players
+2. Players check if the announced image appears on their board
+3. If a player finds the image, they place a marker on that image
+4. The dealer continues drawing cards until a player completes the winning pattern
+
+### Winning Patterns
+The most common winning patterns are:
+- **Lotería**: Complete any horizontal, vertical, or diagonal line (4 images)
+- **Full board**: Cover all 16 images on the board
+- **Corners**: Cover all four corner images
+- **Square**: Cover a 2x2 square anywhere on the board
+
+### Winning
+The first player to complete the agreed-upon pattern shouts "¡Lotería!" or "¡Buenas!" and wins the game. The dealer then verifies the winning board to ensure all called images are correctly marked.
+
+### Traditional Calls
+Each card has a traditional rhyme or phrase that the dealer calls out:
+- **El Sol**: "El sol que nos da vida" (The sun that gives us life)
+- **La Luna**: "La luna que alumbra de noche" (The moon that lights the night)
+- **El Corazón**: "El corazón que late de amor" (The heart that beats with love)
+- **La Estrella**: "La estrella que guía a los reyes" (The star that guides the kings)
+
+### Variations
+- **Multiple winners**: Continue playing until multiple players complete the pattern
+- **Blackout**: Players must cover their entire board
+- **Pattern games**: Create specific patterns like X, diamond, or other shapes
+
+## How to Play This Implementation
+1. Start the game by clicking "New Game"
+2. The dealer will automatically draw cards
+3. Click on matching images on your board
+4. The first to complete a line wins!
 
 ## Available Scripts
 
@@ -8,63 +57,16 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Runs the app in the development mode.\nOpen [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.\nSee the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Builds the app for production to the `build` folder.\nIt correctly bundles React in production mode and optimizes the build for the best performance.
 
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -1,38 +1,235 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  background-color: #f5f5f5;
+  min-height: 100vh;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #d32f2f;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.start-screen {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.language-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.language-tab {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f5f5f5;
+  color: #666;
+  cursor: pointer;
+  border-radius: 20px 20px 0 0;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.language-tab:hover {
+  background-color: #e0e0e0;
+}
+
+.language-tab.active {
+  background-color: #d32f2f;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.game-background {
+  text-align: left;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff8e1;
+  border-radius: 10px;
+  border-left: 4px solid #ffc107;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.game-background h3 {
+  color: #d32f2f;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.game-background p {
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.how-to-play {
+  text-align: left;
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: #fafafa;
+  border-radius: 10px;
+}
+
+.how-to-play h2 {
+  color: #d32f2f;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.how-to-play ol {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.how-to-play li {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.how-to-play p {
+  color: #666;
+  font-style: italic;
+}
+
+.start-button {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.start-button:hover {
+  background-color: #b71c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.game-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.current-card {
+  background-color: #ffebee;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-emoji {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.player-board {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.card {
+  aspect-ratio: 1;
+  background-color: #fff3e0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card.marked {
+  background-color: #e8f5e9;
+  border-color: #4caf50;
+}
+
+.card-name {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.marker {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1.2rem;
+}
+
+.game-info {
+  background-color: #e3f2fd;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #1976d2;
+}
+
+.win-message {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.win-message h2 {
+  color: #4caf50;
+  font-size: 2rem;
+}
+
+.win-message button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s;
+}
+
+.win-message button:hover {
+  background-color: #388e3c;
+  transform: translateY(-2px);
 }
