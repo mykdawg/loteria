@@ -1,3 +1,13 @@
+/**
+ * @file Card.js
+ * @model opencode-v1.0
+ * @generated 2026-01-14
+ * @modified 2026-01-14 (MW)
+ * @reviewer MW
+ * @component Card
+ * @description Individual Lotería card component with marking functionality
+ */
+
 import React from 'react';
 import '../App.css';
 
@@ -11,6 +21,12 @@ import '../App.css';
  * @param {Function} onClick - Click handler
  * @param {string} dataTestId - Test ID for testing
  */
+// MODEL: opencode-v1.0
+// PURPOSE: Individual card component for Lotería game
+// DATE: 2026-01-14
+// CONTEXT: Component decomposition phase
+// REVIEWED: MW 2026-01-14
+
 const Card = ({ card, isMarked, onClick, dataTestId }) => {
   return (
     <div

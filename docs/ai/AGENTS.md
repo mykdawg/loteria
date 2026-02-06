@@ -744,7 +744,92 @@ new_feature.md
 
 ### Local Code Review Process
 
-#### Code Review Checklist
+#### Model Documentation Requirements
+
+#### Model Usage Tracking
+```markdown
+# Model Documentation Standard
+
+## For All Generated Code
+- Document the AI model used
+- Specify version/timestamp
+- Include generation context
+- Maintain consistency
+
+## Code Comment Format
+// MODEL: [model-name]-[version]
+// PURPOSE: [brief-description]
+// DATE: [YYYY-MM-DD]
+// CONTEXT: [relevant-context]
+
+## Example
+// MODEL: opencode-v1.0
+// PURPOSE: Created Card component for Lotería game
+// DATE: 2026-01-14
+// CONTEXT: Component decomposition phase
+
+## PRD Documentation
+Each PRD must include:
+- Model used for initial generation
+- Version/timestamp of generation
+- Any human modifications
+- Review and approval status
+
+## File Header Format
+/**
+ * @file [filename]
+ * @model [model-name]-[version]
+ * @generated [YYYY-MM-DD]
+ * @modified [YYYY-MM-DD] (if applicable)
+ * @reviewer [name] (if reviewed)
+ */
+```
+
+#### Model Tracking in PRDs
+```markdown
+# Model Information
+
+## Generation Details
+- **Model Used**: [model-name]-[version]
+- **Generation Date**: [YYYY-MM-DD]
+- **Prompt/Context**: [brief-description]
+- **Human Review**: [yes/no] [initials]
+- **Modifications**: [description-if-applicable]
+
+## Example PRD Model Section
+```
+### Model Information
+
+**Model Used**: opencode-v1.0
+**Generation Date**: 2026-01-14
+**Prompt/Context**: "Create Card component for Lotería game with React"
+**Human Review**: Yes (MW)
+**Modifications**: Added accessibility attributes, optimized performance
+**Approval Status**: ✅ Approved
+```
+
+#### Model Version Tracking
+```markdown
+# Model Versions
+
+## Current Models
+- opencode-v1.0: Primary code generation
+- opencode-v1.1: Enhanced with testing
+- opencode-v1.2: Documentation focus
+
+## Version History
+- v1.0: Initial release (2026-01-01)
+- v1.1: Added testing (2026-01-10)
+- v1.2: Documentation (2026-01-15)
+
+## Usage Guidelines
+- Always specify model version
+- Track generation dates
+- Document human modifications
+- Maintain review chain
+```
+
+### Code Review Checklist
 ```markdown
 # Mandatory Code Review Checklist
 
@@ -1033,8 +1118,9 @@ try {
 9. Write clear commit messages
 10. **Create PRD before implementing new features**
 11. **Run local code review before committing**
-12. Update PRDs when adding features
-13. Maintain bilingual consistency
+12. **Document model used for code generation**
+13. Update PRDs when adding features
+14. Maintain bilingual consistency
 
 ### Decision Making
 - Prefer simplicity over complexity
@@ -1046,6 +1132,7 @@ try {
 - **Document before implementing**
 - **Test-driven development approach**
 - **Code review before finalizing**
+- **Record model used for generation**
 
 ### When in Doubt
 - Check existing codebase patterns
@@ -1054,5 +1141,6 @@ try {
 - Consider the user impact
 - Document decisions clearly
 - **Create PRD if feature is unclear**
+- **Document model used for generation**
 
 ## End of AGENTS.md

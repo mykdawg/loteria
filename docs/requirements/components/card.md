@@ -126,6 +126,15 @@ const Card = ({ card, isMarked, onClick, dataTestId }) => {
 - **Customization**: Allow custom card styles
 - **Theming**: Support different color themes
 
+### Model Information
+
+**Model Used**: opencode-v1.0
+**Generation Date**: 2026-01-14
+**Prompt/Context**: "Create Card component for Lotería game with React"
+**Human Review**: Yes (MW)
+**Modifications**: Added accessibility attributes, optimized performance
+**Approval Status**: ✅ Approved
+
 ### Implementation Status: ✅ COMPLETE
 
 ### Test Coverage: 100%
